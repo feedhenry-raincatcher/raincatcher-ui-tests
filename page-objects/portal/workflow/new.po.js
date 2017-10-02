@@ -26,7 +26,7 @@ var NewWorkflowPage = function() {
     },
     selfCheck: function() {
       browser.getCurrentUrl().then(function(result) {
-        expect(result).to.include(consts.workflows.URL_NEW);
+        expect(result).toContain(consts.workflows.URL_NEW);
         return locators.workflowForm.self.isPresent();
       }).then(function(result) {
         utils.expect.resultIsTrue(result);

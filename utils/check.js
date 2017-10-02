@@ -4,8 +4,8 @@
  * @param expectedValue - expected value to be retrieved by the locator
  */
 module.exports.elementVisibilityAndValue = function(locator, expectedValue) {
-  expect(locator.isPresent()).eventually.to.be.true;
-  expect(locator.getText()).eventually.to.equal(expectedValue);
+  expect(locator.isPresent()).toBeTrue;
+  expect(locator.getText()).toEqual(expectedValue);
 };
 
 /**
@@ -17,8 +17,8 @@ module.exports.elementVisibilityAndValue = function(locator, expectedValue) {
  * @param expectedValue - expected value to be retrieved by the locator
  */
 module.exports.elementVisibilityAndAttributeValue = function(locator, selectedAttribute, expectedValue) {
-  expect(locator.isPresent()).eventually.to.be.true;
-  expect(locator.getAttribute(selectedAttribute)).eventually.to.equal(expectedValue);
+  expect(locator.isPresent()).toBeTrue;
+  expect(locator.getAttribute(selectedAttribute)).toEqual(expectedValue);
 };
 
 /**
@@ -27,7 +27,7 @@ module.exports.elementVisibilityAndAttributeValue = function(locator, selectedAt
  */
 module.exports.elementsArePresent = function(locators) {
   for (var i = 0; i < locators.length; i++) {
-    expect(locators[i].isPresent()).eventually.to.be.true;
+    expect(locators[i].isPresent()).toBeTrue;
   }
 };
 
@@ -38,7 +38,7 @@ module.exports.elementsArePresent = function(locators) {
  */
 module.exports.valuesAreCorrect = function(locators, expectedValues) {
   for (var i = 0; i < locators.length; i++) {
-    expect(locators[i].getText()).eventually.to.equal(expectedValues[i]);
+    expect(locators[i].getText()).toEqual(expectedValues[i]);
   }
 };
 
@@ -48,6 +48,6 @@ module.exports.valuesAreCorrect = function(locators, expectedValues) {
  * @param expectedSize - expected size of the list
  */
 module.exports.listSize = function(locators, expectedSize) {
-  expect(locators.count()).eventually.to.equal(expectedSize);
+  expect(locators.count()).toEqual(expectedSize);
 };
 

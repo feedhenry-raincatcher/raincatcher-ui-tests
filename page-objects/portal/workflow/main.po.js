@@ -33,7 +33,7 @@ var MainWorkflowPage = function() {
     },
     selfCheck: function() {
       return browser.getCurrentUrl().then(function(result) {
-        expect(result).to.include(consts.workflows.URL);
+        expect(result).toContain(consts.workflows.URL);
         return locators.header.isPresent();
       }).then(function(result) {
         utils.expect.resultIsTrue(result);

@@ -1,29 +1,14 @@
-function setupExpect() {
-  var chai = require('chai');
-  var chaiAsPromised = require('chai-as-promised');
-  chai.use(chaiAsPromised);
-  global.expect = chai.expect;
-}
+const HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
 
 exports.config = {
-  allScriptsTimeout: 20000,
-  mobileURL: '',
-  portalURL: '',
-  framework: 'mocha',
-  mochaOpts: {
-    ui: 'bdd',
-    reporter: 'spec',
-    slow: 5000,
-    timeout: 60000,
-    bail: true,
-    watch: true,
-    require: require('mocha-steps')
-  },
   seleniumAddress: 'http://localhost:4444/wd/hub',
   suites: {
     mobile: 'tests/mobile/*.js',
     portal: 'tests/portal/*.js',
     mobile_portal: 'tests/mobile-portal/*.js'
+  },
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 300000
   },
   capabilities: {
     browserName: 'chrome',
@@ -50,12 +35,9 @@ exports.config = {
     defaultPageLoadTimeout: 10000,
     defaultImplicitWait: 2000
   },
-  onPrepare: function setup() {
-    return browser.driver.executeScript(function() {
-      sessionStorage.clear();
-      localStorage.clear();
-    }).then(setupExpect);
+  onPrepare: function() {
+    jasmine.getEnv().addReporter(new HtmlScreenshotReporter({
+      dest: "reports/screenshots"
+    }));
   }
 };
-
-exports.setupExpect = setupExpect;

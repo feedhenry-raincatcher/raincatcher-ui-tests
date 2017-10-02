@@ -4,7 +4,7 @@
  * @param {*} expected expected result
  */
 module.exports.resultIsEqualTo = function(actual, expected) {
-  expect(actual).to.equal(expected);
+  expect(actual).toEqual(expected);
 };
 
 /**
@@ -13,11 +13,11 @@ module.exports.resultIsEqualTo = function(actual, expected) {
  * @param {*} expected expected result
  */
 module.exports.resultIsNotEqualTo = function(actual, expected) {
-  expect(actual).to.not.equal(expected);
+  expect(actual).not.toEqual(expected);
 };
 
 module.exports.resultIncludes = function(actual, expected) {
-  expect(actual).to.include(expected);
+  expect(actual).toContain(expected);
 };
 
 /**
@@ -25,7 +25,7 @@ module.exports.resultIncludes = function(actual, expected) {
  * @param {*} result
  */
 module.exports.resultIsTrue = function(result) {
-  expect(result).to.be.true;
+  expect(result).toBeTrue;
 };
 
 /**
@@ -33,7 +33,7 @@ module.exports.resultIsTrue = function(result) {
  * @param {*} result
  */
 module.exports.resultIsFalse = function(result) {
-  expect(result).to.be.false;
+  expect(result).not.toBeTrue;
 };
 
 /**
@@ -41,7 +41,7 @@ module.exports.resultIsFalse = function(result) {
  * @param {*} result
  */
 module.exports.resultIsNull = function(result) {
-  expect(result).to.be.null;
+  expect(result).toBeNull;
 };
 
 /**
@@ -49,7 +49,7 @@ module.exports.resultIsNull = function(result) {
  * @param {*} result
  */
 module.exports.resultIsUndefined = function(result) {
-  expect(result).to.be.undefined;
+  expect(result).not.toBeDefined;
 };
 
 /**
@@ -58,7 +58,7 @@ module.exports.resultIsUndefined = function(result) {
  */
 module.exports.eachResultToBeTrue = function(results) {
   results.forEach(function(result) {
-    expect(result).to.be.true;
+    expect(result).toBeTrue;
   });
 };
 
@@ -68,7 +68,7 @@ module.exports.eachResultToBeTrue = function(results) {
  */
 module.exports.eachResultToBeFalse = function(results) {
   results.forEach(function(result) {
-    expect(result).to.be.false;
+    expect(result).not.toBeTrue;
   });
 };
 
@@ -78,6 +78,6 @@ module.exports.eachResultToBeFalse = function(results) {
  */
 module.exports.eachResultToBeNull = function(results) {
   results.forEach(function(result) {
-    expect(result).to.be.null;
+    expect(result).toBeNull;
   });
 };

@@ -28,9 +28,9 @@ WorkorderService.prototype.verifyWorkorderDetailsArePresentAndCorrect = function
   utils.check.elementsArePresent([
     selectedWorkorderPage.locators.detailsListItems
   ]);
-  expect(selectedWorkorderPage.commands.get.id()).to.eventually.equal(params.id);
-  expect(selectedWorkorderPage.commands.get.status()).to.eventually.equal(params.status);
-  expect(selectedWorkorderPage.commands.get.workorderName()).to.eventually.equal(params.workorderName);
+  expect(selectedWorkorderPage.commands.get.id()).toEqual(params.id);
+  expect(selectedWorkorderPage.commands.get.status()).toEqual(params.status);
+  expect(selectedWorkorderPage.commands.get.workorderName()).toEqual(params.workorderName);
 };
 
 WorkorderService.prototype.verifyWorkorderWorkflowIsNotCompleted = function() {
@@ -38,7 +38,7 @@ WorkorderService.prototype.verifyWorkorderWorkflowIsNotCompleted = function() {
 };
 
 WorkorderService.prototype.verifyWorkorderWorkflowIsCompleted = function() {
-  expect(selectedWorkorderPage.commands.get.status()).to.eventually.equal('Complete');
+  expect(selectedWorkorderPage.commands.get.status()).toEqual('Complete');
 };
 
 WorkorderService.prototype.beginWorkflow = function() {
