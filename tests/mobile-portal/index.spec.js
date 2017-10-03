@@ -99,7 +99,7 @@ describe('MOBILE-PORTAL E2E', function() {
     mobileWorkflowService.setWorkflowDetails(50, 'pass', 'fail');
     browser.sleep(5000);
     mobileWorkflowService.submitWorkflowDetails();
-    browser.sleep(20000);
+    browser.sleep(60000);
 
     steps.forEach((step, index) =>
       mobileWorkflowService.checkCompletedWorkflowStep(index, step)
