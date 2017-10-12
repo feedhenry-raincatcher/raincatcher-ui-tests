@@ -1,9 +1,13 @@
 {
+  "plugins": [
+    "jasmine"
+  ],
   "env": {
     "node": true,
     "es6": true,
-    "mocha": true,
-    "protractor": true
+    "jasmine": true,
+    "protractor": true,
+    "browser": true
   },
   "parserOptions": {
     "ecmaVersion": 6
@@ -34,11 +38,6 @@
   },
   "globals": {
     "angular": false,
-    "$fh": false,
-    "localStorage": false,
-    "window": false,
-    "expect": false,
-    "step": false,
-    "xstep": false
+    "$fh": false
   }
 }

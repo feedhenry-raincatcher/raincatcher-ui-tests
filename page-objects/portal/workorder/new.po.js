@@ -7,10 +7,14 @@ var NewWorkorderPage = function() {
     workorderForm: {
       self: element(by.css(workorderFormSelector)),
       fields: {
-        title: element(by.css(workorderFormSelector + ' #inputTitle'))
+        title: element(by.css(workorderFormSelector + ' #inputTitle')),
+        summary: element(by.css(workorderFormSelector + ' #inputSummary'))
       },
       dropdowns: {
         workflow: element(by.css(workorderFormSelector + ' #workflow'))
+      },
+      searchInputs: {
+        assignee: element(by.css(workorderFormSelector + ' input[type="search"]'))
       },
       warnings: {
         workflow: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.workflow.$error"] div')),
@@ -31,7 +35,7 @@ var NewWorkorderPage = function() {
     },
     selfCheck: function() {
       browser.getCurrentUrl().then(function(result) {
-        expect(result).to.include(consts.workorders.portal.URL_NEW);
+        expect(result).toContain(consts.workorders.portal.URL_NEW);
         return locators.workorderForm.self.isPresent();
       }).then(function(result) {
         utils.expect.resultIsTrue(result);

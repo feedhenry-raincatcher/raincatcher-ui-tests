@@ -86,6 +86,7 @@ AuthService.prototype.verifyErrorMessageIsDisplayed = function() {
  */
 AuthService.prototype.logoutOfPortalApp = function() {
   navigationPage.navigateTo.logoutPage();
+  browser.sleep(5000);
 };
 
 module.exports = AuthService;

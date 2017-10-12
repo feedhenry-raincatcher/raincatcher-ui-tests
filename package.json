@@ -9,7 +9,8 @@
     "wdm:start": "webdriver-manager start &",
     "wdm:stop": "webdriver-manager shutdown",
     "test:ui": "protractor conf.js",
-    "test-headless:ui": "protractor conf-headless.js"
+    "test-headless:ui": "protractor conf-headless.js",
+    "test-ci:ui": "protractor conf-ci.js"
   },
   "keywords": [
     "E2E",
@@ -20,16 +21,16 @@
   "author": "twnolan@redhat-com",
   "license": "ISC",
   "dependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "eslint": "^3.16.1",
     "html-dnd": "^1.2.0",
+    "jasmine-reporters": "^2.2.1",
     "lodash": "^4.17.4",
-    "mocha": "^2.5.3",
-    "mocha-jenkins-reporter": "^0.3.8",
-    "mocha-steps": "^1.0.2",
     "protractor": "^5.1.2",
+    "protractor-jasmine2-screenshot-reporter": "^0.4.1",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-plugin-jasmine": "^2.8.5"
   }
 }
