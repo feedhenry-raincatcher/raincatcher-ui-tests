@@ -23,6 +23,7 @@
   "dependencies": {
     "html-dnd": "^1.2.0",
     "jasmine-reporters": "^2.2.1",
+    "jasmine-spec-reporter": "^4.2.1",
     "lodash": "^4.17.4",
     "protractor": "^5.1.2",
     "protractor-jasmine2-screenshot-reporter": "^0.4.1",

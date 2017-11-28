@@ -1,4 +1,5 @@
 const HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
+const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -8,7 +9,7 @@ exports.config = {
     mobile_portal: 'tests/mobile-portal/*.js'
   },
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 300000
+    defaultTimeoutInterval: 300000,
   },
   capabilities: {
     browserName: 'chrome',
@@ -38,6 +39,9 @@ exports.config = {
   onPrepare: function() {
     jasmine.getEnv().addReporter(new HtmlScreenshotReporter({
       dest: "reports/screenshots"
+    }));
+    jasmine.getEnv().addReporter(new SpecReporter({
+      displayStackTrace: 'all'
     }));
   }
 };
