@@ -9,7 +9,7 @@ exports.config = {
     mobile_portal: 'tests/mobile-portal/*.js'
   },
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 300000,
+    defaultTimeoutInterval: 300000
   },
   capabilities: {
     browserName: 'chrome',

@@ -1,76 +1,40 @@
 var utils = require('../../../utils');
+var _ = require('lodash');
 
 var SelectedWorkorderPage = function() {
   var locators = {
-    workorderHeader: element(by.css('#content > div.ng-scope.flex > workorder-summary > md-toolbar > div > h3')),
-    workorderDetails: element(by.css('workorder > md-list')).all(by.css('md-list-item')),
-    workSummary: element(by.css('workorder > p')),
-    workflow: element(by.css('#content > div.ng-scope.flex > workorder-summary > div > workorder > md-list > md-list-item:nth-child(6) > div > h3'))
+    detailsListItems: element.all(by.css('workorder md-list md-list-item')),
+    workSummaryDetails: element(by.css('workorder .md-subheader p')),
+    beginWorkflowButton: element(by.css('button[aria-label="Begin Workflow"]')),
+    workFlowResultSection: element(by.css('workorder-submission-result'))
+  };
+
+  var getListItemChildText = function(index) {
+    return locators.detailsListItems.get(index).element(by.css('h3')).getText();
   };
 
   var commands = {
-    selfCheck: function(header) {
-      return locators.workorderHeader.isPresent().then(function(result) {
-        utils.expect.resultIsTrue(result);
-        return locators.workorderHeader.getText();
-      }).then(function(result) {
-        utils.expect.resultIsEqualTo(result, header);
-      });
+    get: {
+      id: _.partial(getListItemChildText, 0),
+      workorderName: _.partial(getListItemChildText, 1),
+      status: _.partial(getListItemChildText, 2),
+      coordinates: _.partial(getListItemChildText, 3),
+      startDate: _.partial(getListItemChildText, 4),
+      startTime: _.partial(getListItemChildText, 5),
+      finishDate: _.partial(getListItemChildText, 6),
+      finishTime: _.partial(getListItemChildText, 7),
     },
-    getDetails: function() {
-      return locators.workorderDetails.map(function(listItem) {
-        var icon = listItem.element(by.css('md-icon.material-icons')).getText();
-        var h3 = listItem.element(by.css('div > h3')).getText();
-        var p = listItem.element(by.css('div > p')).getText();
-        return { icon, h3, p };
-      });
+    beginWorkflow: function() {
+      locators.beginWorkflowButton.click();
     },
-    getStatus: function(details) {
-      var status = details.find(function(elem) {
-        return elem.p === 'Status';
-      });
-      return status;
-    },
-    getCoordinates: function(details, address) {
-      var coordinates = details.find(function(elem) {
-        return elem.p === address;
-      });
-      return coordinates;
-    },
-    getFinishDate: function(details) {
-      var finishDate = details.find(function(elem) {
-        return elem.p === "Finish Date";
-      });
-      return finishDate;
-    },
-    getFinishTime: function(details) {
-      var finishTime = details.find(function(elem) {
-        return elem.p === "Finish Time";
-      });
-      return finishTime;
-    },
-    getAssignee: function(details) {
-      var assignee = details.find(function(elem) {
-        return elem.p === "Asignee";
-      });
-      return assignee;
-    },
-    getTitle: function(details) {
-      var title = details.find(function(elem) {
-        return elem.p === "Workorder title";
-      });
-      return title;
-    },
-    getWorkSummary: function() {
-      return locators.workSummary.getText();
-    },
-    getWorkflow: function() {
-      return locators.workflow.getText();
+    count: function() {
+      locators.detailsListItems.count();
     }
   };
 
   return {
-    locators, commands
+    locators,
+    commands
   };
 };
 

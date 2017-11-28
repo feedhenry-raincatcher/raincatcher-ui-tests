@@ -3,8 +3,8 @@ var utils = require('../../../utils');
 var SelectedWorkorderPage = function() {
   var locators = {
     workorderHeader: element(by.css('#content > div.ng-scope.flex > workorder-summary > md-toolbar > div > h3')),
-    workorderDetails: element(by.css('workorder>md-list')).all(by.css('md-list-item')),
-    workSummary: element(by.css('workorder>p')),
+    workorderDetails: element(by.css('workorder > md-list')).all(by.css('md-list-item')),
+    workSummary: element(by.css('workorder > p')),
     workflow: element(by.css('#content > div.ng-scope.flex > workorder-summary > div > workorder > md-list > md-list-item:nth-child(6) > div > h3'))
   };
 
@@ -19,9 +19,9 @@ var SelectedWorkorderPage = function() {
     },
     getDetails: function() {
       return locators.workorderDetails.map(function(listItem) {
-        var icon = listItem.element(by.css('md-icon')).getText();
-        var h3 = listItem.element(by.css('div>h3')).getText();
-        var p = listItem.element(by.css('div>p')).getText();
+        var icon = listItem.element(by.css('md-icon.material-icons')).getText();
+        var h3 = listItem.element(by.css('div > h3')).getText();
+        var p = listItem.element(by.css('div > p')).getText();
         return { icon, h3, p };
       });
     },
